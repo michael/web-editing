@@ -13,7 +13,7 @@
 			window.onload = () => {
 				const editable = document.getElementById("editable");
 				editable.onbeforeinput = (event) => {
-					console.log("inputType:", event.inputType);
+					console.log("inputType:", event.inputType, "event", event);
 					event.preventDefault();
 				};
 			};
@@ -30,8 +30,8 @@
 	<body>
 		<div>
 			Select the wrongly spelled "wrld" and replace it using the native spell
-			checker of browsers. Expects inputType: 'insertReplacementText' (not fired
-			on Safari Desktop)
+			checker of browsers. <br />
+			Expects inputType: 'insertReplacementText' (not fired on Safari Desktop)
 		</div>
 		<div id="editable" contenteditable="true">Hello wrld.</div>
 	</body>
