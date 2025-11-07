@@ -1,0 +1,44 @@
+<!--
+	Safari Desktop: programmatic document.exectCommand('undo') at oncompositionend not working
+
+	See: https://github.com/michael/web-editing/issues/16
+-->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title></title>
+		<script>
+			window.onload = () => {
+				const editable = document.getElementById("editable");
+				editable.addEventListener("beforeinput", (event) => {
+					console.log("inputType:", event.inputType, 'isComposing:', event.isComposing);
+				});
+				editable.addEventListener("compositionstart", (event) => {
+					console.log("compositionstart", event);
+				});
+				editable.addEventListener("compositionend", (event) => {
+					// In Chrome/Firefox, this will bring the DOM back to its previous state (before composition started)
+					// However, in Safari Desktop, nothing happens.
+					document.execCommand('undo');
+				});
+			};
+		</script>
+		<style>
+			#editable {
+				max-width: 500px;
+				padding: 5px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+			}
+		</style>
+	</head>
+	<body style="padding: 40px;"">
+		<div>
+			Put the cursor into the text field and enter a composition e.g. pressing
+			<code>^</code> + <code>a</code>.
+		</div>
+		<div id="editable" contenteditable="true"><br /></div>
+	</body>
+</html>
