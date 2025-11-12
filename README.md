@@ -28,7 +28,9 @@ This is just a simplified example. See [#13](https://github.com/michael/web-edit
 
 ## Ability to capture event.getTargetRanges() at oncompositionstart stage
 
-Currently event.getTargetRanges() can only be captured at the onbeforeinput stage, which is not just inconvenient, but also unsufficient in edge cases where (e.g. turn dictation on and off on Samsung-Android)
+Currently `event.getTargetRanges()` can only be captured at the onbeforeinput stage, which is not just inconvenient, but also unsufficient in edge cases where an `oncompositionend` is directly following an `oncompositionend` with no `onbeforeinput/oninput` in between (e.g. turn dictation on and off on Samsung-Android).
+
+It would be great, if `oncompositionstart` would reveal which target range is part of the composition that is about to start.
 
 See [#11](https://github.com/michael/web-editing/issues/11).
 
@@ -48,11 +50,13 @@ function oncompositionstart(event) {
 }
 ```
 
+However, I'd rather **be able to cancel composition events at the very beginning** (not somewhere in between - which I understand interferes with OS-specific implementations of IMEs).
+
 See [#6](https://github.com/michael/web-editing/issues/6).
 
 ## Ability create and handle custom history events
 
-The problem is that when I handle input myself (onbeforeinput with event.preventDefault()) no history entries are created. Hence when you use the browser's native undo (e.g. Edit > Undo) or other triggers/shortcuts, they don't fire historyUndo/historyRedo events.
+The problem is that when I handle input myself (`onbeforeinput` with `event.preventDefault()`) no history entries are created. Hence when you use the browser's native undo (e.g. Edit > Undo) or other triggers/shortcuts, they don't fire `historyUndo` and `historyRedo` events.
 
 In order to allow not just rich text editors, but any apps (e.g. Figma) utilize the native history events, an API for creating and handling custom history events is needed.
 
