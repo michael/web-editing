@@ -1,6 +1,6 @@
 # Background
 
-Between 2011 and 2020 I was working on [Substance.js](https://github.com/substance/substance), a JavaScript library for web-based content editing. We also built [Texture](https://elifesciences.org/labs/8de87c33/texture-an-open-science-manuscript-editor), a visual editor for scientific manuscripts (think LaTeX but with WYSIWYG editing).
+Between 2011 and 2020 I was working on [Substance.js](https://github.com/substance/substance), a JavaScript library for web-based content editing. We also built [Texture](https://elifesciences.org/labs/8de87c33/texture-an-open-science-manuscript-editor) (also see [paper](https://www.ncbi.nlm.nih.gov/books/NBK425544/)), a visual editor for scientific manuscripts (think LaTeX but with WYSIWYG editing).
 
 Since summer 2024, I'm spending more than 50% of my time developing [Svedit](https://svedit.dev), a lightweight library designed to enable building [in-place editable websites](https://editable.website) I'm building this directly on top of web API's, rather than using an existing library (ProseMirror, Lexical,...).
 
