@@ -1,7 +1,7 @@
 <!--
- 	Firefox: Empty fields with placeholder are not keyboard selectable
+ 	Firefox: Clicking a placeholder inside a contenteditable element does not focus the element
 
-	See: https://github.com/michael/web-editing/issues/21
+	See: https://github.com/michael/web-editing/issues/23
 -->
 <!doctype html>
 <html lang="en">
@@ -24,23 +24,27 @@
 				color: #ccc;
 				content: attr(placeholder);
 			}
+
+			.editable .field.centered {
+				text-align: center;
+			}
+
+			.editable .block {
+				position: relative;
+			}
 		</style>
 	</head>
 	<body>
-		<div>
-			By adding a placeholder, one can make an empty element selectable and
-			addressable.<br />
+		<div style="max-width: 500px">
+			CONTEXT: By adding a placeholder, one can make an empty element selectable
+			and addressable.<br />
 			NOTE: This is an alternative to adding a &lt;br&gt; element to make a
 			field addressable.<br /><br />
-			In Chrome and Safari, you can select each empty field using the up/down
-			arrow keys.<br />
-			However, in Firefox, some fields are missed.
+			Clicking the placeholder "Heading 3" does not focus the element in
+			Firefox. However, in Chrome/Safari it does.
 		</div>
 		<div class="editable" contenteditable="true">
-			<h3 class="field empty" placeholder="Heading 3"></h3>
-			<h3 class="field empty" placeholder="Heading 3"></h3>
-			<h3 class="field empty" placeholder="Heading 3"></h3>
-			<h3 class="field empty" placeholder="Heading 3"></h3>
+			<h3 class="centered field empty" placeholder="Heading 3"></h3>
 		</div>
 	</body>
 </html>
